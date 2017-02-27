@@ -14,18 +14,20 @@ public class DoublyLinkedListPalindrome {
             strList.addLast(c);
         }
 
+        //Should be true
         System.out.println(checkIfPalindrome(strList));
     }
 
     public static boolean checkIfPalindrome(DoublyLinkedList<Character> list) {
-        Character headPointer = list.removeFirst();
-        Character tailPointer = list.removeLast();
+        Character head = list.removeFirst();
+        Character tail = list.removeLast();
 
+        //Starting from 0. So no need to do (list.size()+1)/2
         for (int i = 0; i <= list.size() / 2; i++) {
-            if (headPointer != tailPointer)
+            if (head != tail)
                 return false;
-            headPointer = list.removeFirst();
-            tailPointer = list.removeLast();
+            head = list.removeFirst();
+            tail = list.removeLast();
         }
         return true;
     }
