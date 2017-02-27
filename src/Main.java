@@ -16,16 +16,20 @@ public class Main {
     public static int[] insertion(int[] a){
 
         for(int i=0;i<a.length;i++){
-            for(int j=0;j<i;j++){
-                if(a[j]>a[i])
-                {
-                    int temp = a[j];
-                    a[j]=a[i];
-                    a[i]=temp;
-                }
+            int curr = a[i];
+            int j = i;
+
+            while(j>0&& a[j-1]>curr){
+                a[j] = a[j-1];
+                j--;
             }
+            a[j]=curr;
+
         }
         return a;
 
     }
+
+
+
 }
