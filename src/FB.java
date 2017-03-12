@@ -6,11 +6,15 @@ public class FB {
     private static void aVoid(int[] array){
         //Say that you buy on the first day (index 0)
         int buy=array[0];
+        //lowest element in the array
+        int lowest= array[0];
+        int highest=array[0];
         //assume that you sell on day two to start with
         int sell = array[1];
         //Let's assume that the initial profit is from buying on day one and selling on day two
         int profit=0;
         //Start from day two
+
         for(int i=1;i<array.length;i++){
             if(array[i]-buy>profit)
             {
