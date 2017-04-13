@@ -27,11 +27,11 @@ public class Contacts {
             }
         }
         printSolution(sol);*/
-    trie.insert("hack");
-    trie.insert("hacker");
-    trie.insert("hackerrank");
+        trie.insert("hack");
+        trie.insert("hacker");
+        trie.insert("hackerrank");
 
-        System.out.println(trie.patternMatches("hack"));
+        System.out.println(trie.patternMatches("hac"));
 
     }
 
@@ -61,11 +61,11 @@ class Trie {
             if (trieNodeLookup == null) {
                 TrieNode newChild = new TrieNode(c[i]);
                 cursor.getChildren().put(c[i], newChild);
-                cursor=newChild;
+                cursor = newChild;
             } else
                 cursor = trieNodeLookup;
-            if(i==c.length-1)
-                trieNodeLookup.isLeaf=true;
+            if (i == c.length - 1)
+                cursor.isLeaf = true;
         }
     }
 
@@ -73,31 +73,40 @@ class Trie {
         char[] c = s.toCharArray();
         TrieNode cursor = root;
 
-        if(root.getChildren().isEmpty() || root.getChildren().get(c[0])==null) return 0;
+        if (root.getChildren().isEmpty() || root.getChildren().get(c[0]) == null) return 0;
 
-        for(int i=0;i<c.length;i++)
-        {
-            if(cursor.getChildren().get(c[i])!=null)
-                cursor=cursor.getChildren().get(c[i]);
-
-
+        int count = 0;
+        for (int i = 0; i < c.length; i++) {
+            if (cursor.getChildren().get(c[i]) != null) {
+                cursor = cursor.getChildren().get(c[i]);
+            } else
+                return count;
         }
-
+        Queue<TrieNode> q = new LinkedList<>();
+        q.offer(cursor);
+        while (!q.isEmpty()) {
+            TrieNode node = q.poll();
+            if (node.isLeaf) count++;
+            for (TrieNode n : node.getChildren().values()) {
+                q.offer(n);
+            }
+        }
+        return count;
     }
 
-    public void printTrie(){
-        if(root==null) return;
+    public void printTrie() {
+        if (root == null) return;
         Queue<TrieNode> q = new LinkedList<>();
-         q.offer(root);
-         while(!q.isEmpty()){
-             TrieNode trieNode = q.poll();
+        q.offer(root);
+        while (!q.isEmpty()) {
+            TrieNode trieNode = q.poll();
             Map<Character, TrieNode> children = trieNode.getChildren();
-             children.entrySet().forEach(child-> {
-                 System.out.printf("%c\t",child.getValue().data.charValue());
-                 q.offer(child.getValue());
-             });
+            children.entrySet().forEach(child -> {
+                System.out.printf("%c\t", child.getValue().data.charValue());
+                q.offer(child.getValue());
+            });
             System.out.print('\n');
-         }
+        }
 
     }
 }
@@ -110,7 +119,7 @@ class TrieNode {
 
     public TrieNode(char data) {
         this.children = new HashMap();
-        this.data=data;
+        this.data = data;
     }
 
     public Map<Character, TrieNode> getChildren() {
