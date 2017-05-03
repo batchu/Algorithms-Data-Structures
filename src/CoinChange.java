@@ -1,3 +1,4 @@
+import javax.xml.crypto.NoSuchMechanismException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -6,12 +7,12 @@ import java.util.List;
  */
 public class CoinChange {
 
-    public static void main(String... args){
+    public static void main(String... args) throws IllegalStateException {
 
         //available denominations. This is always sorted ASC
-        int[] denominations = {5,10,25,50,100};
+        int[] denominations = {1,5,10,25,50,100};
 
-        int cost=60;
+        int cost=70;
         int paid=75;
 
         ArrayList<Integer> solution = new ArrayList<>();
@@ -20,19 +21,15 @@ public class CoinChange {
         solution.forEach(i-> System.out.println(i));
 
     }
+    public static void calcChange(List<Integer> sol, int diff, int[] denominations) throws IllegalStateException {
 
-
-//First call input values - sol is {}, cost is 60, paid is 75, denominations are {5,10,25,50,100};
-//Making this function referentially transparent so that it has no side effects i.e embracing functional programming principles to make it reusable.
-    public static void calcChange(List<Integer> sol, int diff, int[] denominations){
-
-        if(diff<0) throw new IllegalStateException(String.format("Paid less than Cost."));
+        if(diff<0) throw new IllegalStateException(String.format("Paid less than cost of the product."));
         //Found the solution.
         if(diff==0) return;
 
-        //Find the highest denomination that's close to diff
+        //Find the highest denomination that's slightly lower than diff
         int highestMatchingDenomination = 0;
-        //This complexity can be reduced using binary search. From n to log(n)
+        //This complexity can be reduced from O(n) to O(logn) using binary search.
         for(int i=denominations.length-1;i>=0;i--)
         {
             if(denominations[i]<=diff){
@@ -41,12 +38,12 @@ public class CoinChange {
             }
         }
 
-        if(highestMatchingDenomination!=0)
+        if(highestMatchingDenomination>0)
             sol.add(highestMatchingDenomination);
-
+        if(highestMatchingDenomination==0)
+           throw new IllegalStateException("No solution available");
         calcChange(sol,diff-highestMatchingDenomination, denominations );
     }
-
 
 
 
