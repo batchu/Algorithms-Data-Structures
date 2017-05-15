@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,50 +10,43 @@ public class CoinChangeAll {
 
     public static void main(String... args) {
 
-//        int[] denominations = {1, 2, 3};
-//        int[] denominations = {2, 5, 3, 6};
-        int[] denominations = {1, 5, 10, 25, 50};
+        long[] denominations = {1, 5, 10, 25, 50};
 
-        int cost = 60;
-        int paid = 75;
+        long cost = 60;
+        long paid = 75;
 
-        int change = paid - cost;
+        long change = paid - cost;
 
         Map<Integer, List<Integer>> solList = new HashMap<>(denominations.length);
 
-        int solutions = coinChange(denominations, change,0);
+        long solutions = coinChange(denominations, change, 0, new HashMap<String, Long>());
 
         System.out.println("Total Solutions "+solutions);
 
     }
 
+    static long coinChange(long[] coins, long money, int index, HashMap<String, Long> map) {
 
-    public static int coinChange(int[] denominations, int change, int index) {
-
-
-        if (index >= denominations.length)
-            return 0;
-
-        int diff = change - denominations[index];
-
-        if(diff<0)
-            return 0;
-
-        if (diff == 0){
+        if (money == 0)
             return 1;
+
+        if (index >= coins.length)
+            return 0;
+
+        String key = index+"-"+money;
+        if(map.get(key)!=null)
+            return map.get(key);
+        long amountWithCoin = 0;
+        long ways = 0;
+        while (amountWithCoin <= money) {
+            long remaining = money - amountWithCoin;
+            ways += coinChange(coins, remaining, index + 1, map);
+            amountWithCoin += coins[index];
         }
-
-
-        int selfSols = coinChange(denominations,diff, index);
-        int remainingSols = coinChange(denominations,change, index + 1);
-        return  selfSols + remainingSols;
+        map.put(key, ways);
+        return ways;
 
     }
 
-    private static void print(List<Integer> solArray) {
-        for(int i: solArray)
-            System.out.print(i+" ");
-        System.out.println();
-    }
 
 }
