@@ -1,15 +1,10 @@
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
-        int[] a = {3,6,8,1,9,15};
+    StockAdvisor advisor = new StockAdvisor();
 
-        int[] b = insertion(a);
-
-    for(int c: b){
-        System.out.println(c);
-    }
-
+        double[] arr={5, 27, 1, 3, 17, 2, 17};
+        System.out.println(advisor.advise(arr));
 
     }
 
