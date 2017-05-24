@@ -111,8 +111,8 @@ public class HayStack {
 
         needleStr.chars().forEach(c -> {
             int count = 1;
-            if (map.containsKey(c))
-                count = map.get(c) + 1;
+            if (map.containsKey((char) c))
+                count = map.get((char) c) + 1;
             map.put((char) c, count);
         });
         return map;
