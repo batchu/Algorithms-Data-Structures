@@ -22,7 +22,8 @@ public class HayStackTest {
     @Test
     public void isNeedleInTheHayStack_shouldReturnTrueWhenNeedleIsPresentInTheHayStackOfLargeSize() throws Exception {
 
-        assertEquals(HayStack.bootstrapSearch("rrca", "career"), true);
+        assertEquals(HayStack.bootstrapSearch("rerca", "Anyone can learn how to code—even if you didn’t study it in school. Here’s how I transformed my career from biologist to programmer."), false);
+        assertEquals(HayStack.bootstrapSearch("mroed", "Anyone can learn how to code—even if you didn’t study it in school. Here’s how I transformed my career from biologist to programmer."), true);
     }
       @Test
     public void isNeedleInTheHayStack_shouldReturnFalseWhenNeedleIsPresentInTheHayStack() throws Exception {
