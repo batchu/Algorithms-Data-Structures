@@ -49,7 +49,9 @@ public class HayStack {
             Integer count = 0;
             //Search if the needle is found in the haystack at every instance of the character in the haystack.
             while (count < needle.size()) {
-                if (search(index, haystack, needle))
+            //The hashmap is going to be morphed during every search! So make a deep-copy of the Needle for every instance of search.
+                if (search(index, haystack, needle.entrySet().stream()
+                        .collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue()))))
                     return true;
                 count++;
             }

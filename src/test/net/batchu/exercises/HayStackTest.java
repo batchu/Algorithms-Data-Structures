@@ -19,6 +19,11 @@ public class HayStackTest {
         assertEquals(HayStack.bootstrapSearch("saxm", "xmas"), true);
         assertEquals(HayStack.bootstrapSearch("s", "xmas"), true);
     }
+    @Test
+    public void isNeedleInTheHayStack_shouldReturnTrueWhenNeedleIsPresentInTheHayStackOfLargeSize() throws Exception {
+
+        assertEquals(HayStack.bootstrapSearch("career", "Anyone can learn how to code—even if you didn’t study it in school. Here’s how I transformed my career from biologist to programmer."), true);
+    }
       @Test
     public void isNeedleInTheHayStack_shouldReturnFalseWhenNeedleIsPresentInTheHayStack() throws Exception {
 
