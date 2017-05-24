@@ -16,7 +16,7 @@ public class Contacts {
                 case "add":
                     trie.insert(contact);
                     break;
-                case "find":
+                case "findSearchCases":
                     sol.add(trie.patternMatches(contact));
                     break;
                 default:

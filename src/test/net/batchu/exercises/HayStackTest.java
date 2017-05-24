@@ -12,36 +12,36 @@ public class HayStackTest {
     @Test
     public void isNeedleInTheHayStack_shouldReturnTrueWhenNeedleIsPresentInTheHayStack() throws Exception {
 
-        assertEquals(HayStack.isNeedleInTheHayStack("654", "12345678"), true);
-        assertEquals(HayStack.isNeedleInTheHayStack("abc", "abcdef"), true);
-        assertEquals(HayStack.isNeedleInTheHayStack("bdc", "abcdef"), true);
-        assertEquals(HayStack.isNeedleInTheHayStack("sam", "xmas"), true);
-        assertEquals(HayStack.isNeedleInTheHayStack("saxm", "xmas"), true);
-        assertEquals(HayStack.isNeedleInTheHayStack("s", "xmas"), true);
+        assertEquals(HayStack.bootstrapSearch("654", "12345678"), true);
+        assertEquals(HayStack.bootstrapSearch("abc", "abcdef"), true);
+        assertEquals(HayStack.bootstrapSearch("bdc", "abcdef"), true);
+        assertEquals(HayStack.bootstrapSearch("sam", "xmas"), true);
+        assertEquals(HayStack.bootstrapSearch("saxm", "xmas"), true);
+        assertEquals(HayStack.bootstrapSearch("s", "xmas"), true);
     }
       @Test
     public void isNeedleInTheHayStack_shouldReturnFalseWhenNeedleIsPresentInTheHayStack() throws Exception {
 
-        assertEquals(HayStack.isNeedleInTheHayStack("adg", "abcdef"), false);
-        assertEquals(HayStack.isNeedleInTheHayStack("xs", "xmas"), false);
-        assertEquals(HayStack.isNeedleInTheHayStack("abcd", "xmas"), false);
-        assertEquals(HayStack.isNeedleInTheHayStack("153", "12345678"), false);
-        assertEquals(HayStack.isNeedleInTheHayStack("9", "12345678"), false);
+        assertEquals(HayStack.bootstrapSearch("adg", "abcdef"), false);
+        assertEquals(HayStack.bootstrapSearch("xs", "xmas"), false);
+        assertEquals(HayStack.bootstrapSearch("abcd", "xmas"), false);
+        assertEquals(HayStack.bootstrapSearch("153", "12345678"), false);
+        assertEquals(HayStack.bootstrapSearch("9", "12345678"), false);
 
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void isNeedleInTheHayStack_shouldThrowExceptionOnInvalidInput1() throws Exception {
-        HayStack.isNeedleInTheHayStack("", "abcdef");
+        HayStack.bootstrapSearch("", "abcdef");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void isNeedleInTheHayStack_shouldThrowExceptionOnInvalidInput2() throws Exception {
-        HayStack.isNeedleInTheHayStack("asdfasdf", "");
+        HayStack.bootstrapSearch("asdfasdf", "");
     }
     @Test(expected = IllegalArgumentException.class)
     public void isNeedleInTheHayStack_shouldThrowExceptionOnInvalidInput3() throws Exception {
-        HayStack.isNeedleInTheHayStack("", "");
+        HayStack.bootstrapSearch("", "");
     }
 
     @Test
@@ -50,7 +50,7 @@ public class HayStackTest {
         List<Character> haystack = "abcdef".chars().mapToObj(e -> (char) e).collect(Collectors.toList());
         Map<Character, Integer> needle = HayStack.toMap("abc");
 
-        assertEquals(true, HayStack.find(needle,haystack, 'a'));
+        assertEquals(true, HayStack.findSearchCases(needle,haystack, 'a'));
     }
 
     @Test

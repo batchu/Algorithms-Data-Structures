@@ -266,7 +266,7 @@ public class GraphAlgorithms {
     PositionalList<Edge<Integer>> tree = new LinkedPositionalList<>();
     // pq entries are edges of graph, with weights as keys
     PriorityQueue<Integer, Edge<Integer>> pq = new HeapPriorityQueue<>();
-    // union-find forest of components of the graph
+    // union-findSearchCases forest of components of the graph
     Partition<Vertex<V>> forest = new Partition<>();
     // map each vertex to the forest position
     Map<Vertex<V>,Position<Vertex<V>>> positions = new ProbeHashMap<>();

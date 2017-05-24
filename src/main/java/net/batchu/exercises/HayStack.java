@@ -6,15 +6,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-
+/*
+Searches if any permutation of a Needle is found in a Haystack with an optimized limited search upon all occurences
+ */
 public class HayStack {
 
     public static void main(String... args){
-
-        System.out.println(isNeedleInTheHayStack("asx","xmas"));
+        //Refer to HayStackTest.java for comprehensive Unit Tests
+        System.out.println(bootstrapSearch("asx", "xmas"));
     }
 
-    public static boolean isNeedleInTheHayStack(String needleStr, String haystackStr) {
+    /*
+    Preps input data and performs input validation
+     */
+    public static boolean bootstrapSearch(String needleStr, String haystackStr) {
 
         //Input validation
         if(empty(needleStr) || empty(haystackStr))
@@ -28,13 +33,13 @@ public class HayStack {
         Map<Character, Integer> needle = toMap(needleStr);
         List<Character> haystack = haystackStr.chars().mapToObj(e -> (char) e).collect(Collectors.toList());
 
-        return find(needle, haystack, needleStr.charAt(0));
+        return findSearchCases(needle, haystack, needleStr.charAt(0));
     }
 
     /*
     Searches for all the instances of the first Character of the needle in the haystack. Every instance is a candidate for a search!
      */
-    public static boolean find(Map<Character, Integer> needle, List<Character> haystack, Character firstChar) {
+    public static boolean findSearchCases(Map<Character, Integer> needle, List<Character> haystack, Character firstChar) {
 
         List<Integer> occurances = findIndexesOf(firstChar, haystack);
 
