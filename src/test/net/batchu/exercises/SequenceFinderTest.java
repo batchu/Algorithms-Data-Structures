@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Created by uhsarp on 6/3/2017.
+ * Created by Prashanth Batchu on 6/3/2017.
  */
 public class SequenceFinderTest {
     @Test

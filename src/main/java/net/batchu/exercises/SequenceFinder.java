@@ -2,6 +2,9 @@ package net.batchu.exercises;
 
 import java.util.Arrays;
 
+/**
+ * Created by Prashanth Batchu on 6/3/2017.
+ */
 public class SequenceFinder {
 
     public static void main(String... args) {
