@@ -5,15 +5,9 @@ import java.util.Arrays;
 /**
  * Created by Prashanth Batchu on 6/3/2017.
  */
+
+//Refer to SequenceFinderTest.java for Unit Tests
 public class SequenceFinder {
-
-    public static void main(String... args) {
-
-        int[] arr = {1, 6, 2, 3, 4, 8, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 13, 14, 15, 16, 17, 18, 19, 20};
-        int[] seq = findSequence(arr);
-
-        Arrays.stream(seq).forEach(t -> System.out.print(t + " "));
-    }
 
     public static int[] findSequence(int[] arr) {
 
@@ -46,6 +40,10 @@ public class SequenceFinder {
         if (end == 0)
             end++;
         return Arrays.copyOfRange(arr, start, end);
+    }
+
+    public static void printArr(int[] arr){
+        Arrays.stream(arr).forEach(t -> System.out.print(t + " "));
     }
 
 
