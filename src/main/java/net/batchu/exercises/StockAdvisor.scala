@@ -1,10 +1,9 @@
-package main
+package net.batchu.exercises
 
 /**
   * Created by uhsarp on 5/21/2017.
   */
 class StockAdvisor {
-
 
   def advise(arr: Array[Double]): Double = {
 
