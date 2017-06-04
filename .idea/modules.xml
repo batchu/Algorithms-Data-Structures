@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Algorithms-Data-Structures.iml" filepath="$PROJECT_DIR$/.idea/Algorithms-Data-Structures.iml" />
-      <module fileurl="file://$PROJECT_DIR$/algorithms-datastructures.iml" filepath="$PROJECT_DIR$/algorithms-datastructures.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Algorithms-Data-Structures.iml" filepath="$PROJECT_DIR$/Algorithms-Data-Structures.iml" />
+      <module fileurl="file://C:\Users\uhsarp\IdeaProjects\Algorithms-Data-Structures\algorithms-datastructures.iml" filepath="C:\Users\uhsarp\IdeaProjects\Algorithms-Data-Structures\algorithms-datastructures.iml" />
     </modules>
   </component>
 </project>
