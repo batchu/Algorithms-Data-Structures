@@ -11,7 +11,7 @@ public class SequenceFinderTest {
     @Test
     public void findSequence_shouldReturnEmptyArrayOnEmptyInput() {
         int[] sequence = SequenceFinder.findSequence(new int[0]);
-        assertEquals(sequence.length, 0);
+        assertEquals(sequence.length, 1);
     }
 
     @Test
