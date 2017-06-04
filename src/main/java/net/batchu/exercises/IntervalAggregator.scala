@@ -1,3 +1,5 @@
+package net.batchu.exercises
+
 /**
   * Created by Prashanth Batchu on 6/3/2017.
   */
