@@ -9,6 +9,8 @@ object IntervalAggregator {
     Merges the input interval into an existing Array of Intervals
     First argument is an Array of Tuples (Int, Int). The second argument is the new interval that needs to be merged in to the first argument properly
     Refer to IntervalAggregatorTest.scala for the accompanying unit tests
+
+    Notes: The method treats the inputs as well as intermediate transformations as immutable. This is referentially transparent so it can be run in a multithreaded environment without the fear of a lock condition.
    */
   def mergeInterval(arr: Array[(Int, Int)], interval: (Int, Int)) = {
 
@@ -19,6 +21,9 @@ object IntervalAggregator {
     Partition the Array of Tuples in to two parts.
     The first partition (split._1) includes all the tuples that overlap with the new Interval
     The second partition (split._2) includes all the disjoint intervals
+
+    Logic for splitting:
+      There's an overlap between two intervals if the width of two intervals is greater than the max and min of the two intervals
      */
     val split = arr.partition(u => (((u._2-u._1)+(interval._2-interval._1))>= ((u._2 max interval._2)-(u._1 min interval._1))))
 
